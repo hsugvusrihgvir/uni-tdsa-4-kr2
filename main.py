@@ -100,7 +100,7 @@ def profile2(response:Response, session_token: str | None = Cookie(default=None)
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid session")
 
     user_id = data["user_id"]
-    user = us.get_user(UUID(user_id))
+    user = us.get_user_by_id(UUID(user_id))
     if not user:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid session")
 
